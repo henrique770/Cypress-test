@@ -17,28 +17,44 @@ const Todo = () => {
 
   return (
     <>
-      <form onSubmit={handleFormSubmit}>
-        <input
-          onChange={handleInputChange}
-          placeholder='Type a new task here'
-          type='text'
-          value={task}
-        />
-        <button type='submit'>Add new task</button>
-      </form>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '70vh',
+        }}
+      >
+        <h1>To-Do List Component</h1>
+        <form onSubmit={handleFormSubmit}>
+          <input
+            data-cy='input-task'
+            onChange={handleInputChange}
+            placeholder='Type a new task here'
+            type='text'
+            value={task}
+          />
+          <button data-cy='btn-add' type='submit'>
+            Add new task
+          </button>
+        </form>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Task</th>
-          </tr>
-        </thead>
-        <tbody>
-          {tasks.map((t, index) => (
-            <tr key={index}>{t}</tr>
-          ))}
-        </tbody>
-      </table>
+        <table>
+          <thead>
+            <tr>
+              <th>Task</th>
+            </tr>
+          </thead>
+          <tbody>
+            {tasks.map((t, index) => (
+              <tr data-cy='table-tasks-row' key={index}>
+                {t}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 };
